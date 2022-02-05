@@ -109,22 +109,6 @@ class CryptoObject {
             resolve(`${encrypted}#${iv}#${auth}`);
         });
     }
-} 
+}
 
-(async ()=>{
-    console.time() 
-    // Cria o objeto com dados
-    const cryptoObject = await new CryptoObject()
-        .setData({name: 'Winter', teste:"abc"})
-        .setSystem('TEST')
-        .setExpiration(360)
-        .serialize();
-    
-    console.log("Objeto criptografado: " ,cryptoObject)
-    // Passa para o outro lado 
-    const classeNova = await new CryptoObject().deserialize(cryptoObject, 'TEST');
-    
-    console.log("Instancia decriptografado: " , classeNova)
-    console.timeEnd();
-})();
-
+export default CryptoObject;

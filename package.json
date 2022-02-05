@@ -3,18 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "watch": "tsc -p tsconfig.json -w --downlevelIteration",
     "build": "tsc -p tsconfig.json --downlevelIteration",
     "local": "node dist/index.js -e js",
     "start": "tsc -p tsconfig.json --downlevelIteration && node dist/server.js",
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "keywords": [],
   "author": "fmolliet",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^27.4.0",
     "@types/node": "^16.11.1",
+    "ava": "^4.0.1",
     "esbuild": "^0.14.3",
     "glob": "^7.1.7",
     "got": "^11.8.2",
@@ -22,5 +25,9 @@
     "typedoc": "^0.22.11",
     "typedoc-plugin-markdown": "~3.10.4",
     "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "jest": "^27.4.7",
+    "ts-jest": "^27.1.3"
   }
 }
