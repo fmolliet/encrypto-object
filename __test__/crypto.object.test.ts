@@ -32,4 +32,22 @@ describe('Testing encrypto Object', () => {
         //console.timeEnd();
       expect(instance).toBeInstanceOf(CryptoObject);
     });
+    
+    test('Creating instance from crypto object with password', async () => {
+        
+        const cryptoObject = await new CryptoObject("12345")
+            .setData({name: 'Winter', teste:"abc"})
+            .setSystem('TEST')
+            .setExpiration(360)
+            .serialize();
+        
+        //console.log("Objeto criptografado: " ,cryptoObject)
+
+        const instance = await new CryptoObject("12345").deserialize(cryptoObject, 'TEST');
+        
+        //console.log("Instancia decriptografado: " , instance)
+        //console.timeEnd();
+      expect(instance).toBeInstanceOf(CryptoObject);
+    });
+    
 });
