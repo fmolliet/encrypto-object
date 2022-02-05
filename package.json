@@ -9,7 +9,7 @@
     "build": "tsc -p tsconfig.json --downlevelIteration",
     "local": "node dist/index.js -e js",
     "start": "tsc -p tsconfig.json --downlevelIteration && node dist/server.js",
-    "test": "jest --verbose"
+    "test": "jest --verbose --coverage"
   },
   "keywords": [],
   "author": "fmolliet",
