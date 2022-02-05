@@ -44,8 +44,9 @@ class CryptoObject {
     this._data = data;
     return this;
   }
-
-  public async deserialize(cryptoObject: string, system: string, password: string | null = null) {
+  
+  public async deserialize(cryptoObject: string, system? :string): Promise<CryptoObject>;
+  public async deserialize(cryptoObject: string, system: string, password: string | null = null): Promise<CryptoObject> {
     if (password) {
       this.setPhrase(password);
     }
@@ -60,7 +61,7 @@ class CryptoObject {
       throw new Error('Expired Crypto Object!');
     }
 
-    if (instance.getSystem() && instance.getSystem() !== system) {
+    if ( system && instance.getSystem() && instance.getSystem() !== system) {
       throw new Error('Invalid system!');
     }
 
