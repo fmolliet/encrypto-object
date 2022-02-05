@@ -1,5 +1,5 @@
 {
-  "name": "crypto-object",
+  "name": "encrypto-object",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "test": "jest"
   },
   "keywords": [],
-  "author": "Fabio Pedreria Molliet",
+  "author": "fmolliet",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^16.11.1",
@@ -19,7 +19,7 @@
     "glob": "^7.1.7",
     "got": "^11.8.2",
     "tar": "^6.1.11",
-    "typedoc": "~0.21.9",
+    "typedoc": "^0.22.11",
     "typedoc-plugin-markdown": "~3.10.4",
     "typescript": "^4.5.5"
   }
