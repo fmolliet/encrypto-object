@@ -1,8 +1,9 @@
 {
   "name": "encrypto-object",
   "version": "1.1.1",
-  "description": "",
-  "main": "index.js",
+  "description": "Lib para criação de objetos criptografados",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "type": "commonjs",
   "files": ["lib/**/*"],
   "scripts": {
@@ -12,9 +13,14 @@
     "start": "tsc -p tsconfig.json --downlevelIteration && node dist/server.js",
     "test": "jest --verbose --coverage",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "tslint -p tsconfig.json"
+    "lint": "tslint -p tsconfig.json",
+    "prepare" : "npm run build",
+    "prepublishOnly" : "npm test && npm run lint",
+    "preversion" : "npm run lint",
+    "version" : "npm run format && git add -A src",
+    "postversion" : "git push && git push --tags"
   },
-  "keywords": [],
+  "keywords": ["Crypto", "Cryptography", "Security", "Encrypt"],
   "author": "fmolliet",
   "license": "ISC",
   "devDependencies": {
