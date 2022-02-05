@@ -45,15 +45,11 @@ class CryptoObject {
     return this;
   }
 
-  constructor( password?: string){
-    if(password) this.setPhrase(password)
+  constructor(password?: string) {
+    if (password) this.setPhrase(password);
   }
 
-  public async deserialize(
-    cryptoObject: string,
-    system?: string,
-  ): Promise<CryptoObject> {
-
+  public async deserialize(cryptoObject: string, system?: string): Promise<CryptoObject> {
     const encrypted = cryptoObject.split('#');
 
     const decrypted = await this.decrypt(encrypted[0], encrypted[1], encrypted[2]);
