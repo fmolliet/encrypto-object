@@ -51,7 +51,7 @@ class CryptoObject {
 
   public async deserialize(cryptoObject: string, system?: string): Promise<CryptoObject> {
     const cryptogram = Buffer.from(cryptoObject, 'base64url').toString('utf8');
-    
+
     const encrypted = cryptogram.split('#');
 
     const decrypted = await this.decrypt(encrypted[0], encrypted[1], encrypted[2]);
@@ -62,7 +62,7 @@ class CryptoObject {
       throw Error('Expired Crypto Object!');
     }
 
-    if (instance.getSystem() &&  ( !system  || ( system && instance.getSystem() !== system )) ) {
+    if (instance.getSystem() && (!system || (system && instance.getSystem() !== system))) {
       throw Error('Invalid system!');
     }
 
