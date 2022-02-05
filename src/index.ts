@@ -50,18 +50,20 @@ class CryptoObject {
   }
 
   public async deserialize(cryptoObject: string, system?: string): Promise<CryptoObject> {
-    const encrypted = cryptoObject.split('#');
+    const cryptogram = Buffer.from(cryptoObject, 'base64url').toString('utf8');
+    
+    const encrypted = cryptogram.split('#');
 
     const decrypted = await this.decrypt(encrypted[0], encrypted[1], encrypted[2]);
 
     const instance: CryptoObject = Object.assign(new CryptoObject(), JSON.parse(decrypted));
 
     if (instance.getExpiration() < new Date().getTime()) {
-      throw new Error('Expired Crypto Object!');
+      throw Error('Expired Crypto Object!');
     }
 
-    if (system && instance.getSystem() && instance.getSystem() !== system) {
-      throw new Error('Invalid system!');
+    if (instance.getSystem() &&  ( !system  || ( system && instance.getSystem() !== system )) ) {
+      throw Error('Invalid system!');
     }
 
     return instance;
@@ -96,7 +98,7 @@ class CryptoObject {
     return new Promise((resolve, reject) => {
       const { encrypted, iv, auth } = this.encrypt(JSON.stringify(this));
 
-      resolve(`${encrypted}#${iv}#${auth}`);
+      resolve(Buffer.from(`${encrypted}#${iv}#${auth}`, 'utf8').toString('base64url'));
     });
   }
 }
