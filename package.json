@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "type": "commonjs",
+  "files": ["lib/**/*"],
   "scripts": {
     "watch": "tsc -p tsconfig.json -w --downlevelIteration",
     "build": "tsc",
